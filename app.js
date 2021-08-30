@@ -1,11 +1,14 @@
-let titles = document.getElementsByClassName("title");
+// $('#wrapper') // in jQuery
+const wrap = document.querySelector("#book-list li:nth-child(2) .name");
+// console.log(wrap);
 
-// check if array or not
-// console.log(Array.isArray(titles)); // should return FALSE
+let book = document.querySelector("#book-list li .name"); // only return one element
+// console.log(books);
 
-// convert a non array to array
-// console.log(Array.isArray(Array.from(titles))); // should return TRUE
+let books = document.querySelectorAll("#book-list li .name"); // return collection of elements
+// console.log(books);
 
-Array.from(titles).forEach((item) => {
-  console.log(item);
+// array method using forEach
+Array.from(books).forEach((book) => {
+  console.log(book);
 });
