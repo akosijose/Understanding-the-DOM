@@ -1,7 +1,8 @@
-const banner = document.querySelector("#page-banner");
-console.log("#page-banner node type is:", banner.nodeType); //should return 1
-console.log("#page-banner node name is:", banner.nodeName); // should return DIV
-console.log("#page-banner has child node:", banner.hasChildNodes()); //should return TRUE
+const bookList = document.querySelector("#book-list");
 
-const bannerCloned = banner.cloneNode(true);
-console.log(bannerCloned);
+console.log("the parent node is:", bookList.parentNode); // to show the parent node is
+console.log("the parent element is:", bookList.parentElement); // to show the parent elament is
+console.log("the parent element is:", bookList.parentElement.parentElement); // parent element and the parent element of this element
+
+// console.log(bookList.childNodes); // show the children element and line break
+console.log(bookList.children); // recommended
