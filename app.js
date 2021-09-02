@@ -1,15 +1,20 @@
-const bookList = document.querySelector("#book-list");
+var btns = document.querySelectorAll("#book-list .delete");
 
-// log the next siblings
-console.log("book-list next sibling is:", bookList.nextSibling);
-console.log("book-list next element sibling is:", bookList.nextElementSibling);
-// log the previous siblings
-console.log("book-list previous sibling is:", bookList.previousSibling);
-console.log(
-  "book-list previous element sibling is:",
-  bookList.previousElementSibling
-);
+// btns.addEventListener // we can't do that - we need to loop that element
+// transfer this element to an Array.from
 
-// example of complex how to navigate previous element and access it
-bookList.previousElementSibling.querySelector("p").innerHTML +=
-  "<br /> Hello previous sibling";
+Array.from(btns).forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    // navigate outward to the parent element to grab that LI
+    console.log(e);
+    const li = e.target.parentElement;
+    li.parentNode.removeChild(li);
+  });
+});
+
+// prevent default method
+const link = document.querySelector("#page-banner a");
+link.addEventListener("click", (e) => {
+  e.preventDefault();
+  // alert(`navigate to ${e.target.textContent} was prevented`); // pwede rin console dito
+});
