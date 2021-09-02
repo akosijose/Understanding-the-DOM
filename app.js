@@ -14,5 +14,20 @@ const addForm = document.forms["add-book"];
 addForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const value = addForm.querySelector('input[type="text"]').value;
-  console.log(value);
+
+  // create elements
+  const li = document.createElement("li");
+  const bookName = document.createElement("span");
+  const deleteBtn = document.createElement("span");
+
+  // add content
+  deleteBtn.textContent = "delete";
+  bookName.textContent = value;
+
+  // appeend to document inside the LI element
+  li.appendChild(bookName);
+  li.appendChild(deleteBtn);
+
+  // append the LI to the DOM
+  list.appendChild(li);
 });
