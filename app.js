@@ -1,18 +1,47 @@
-// changing attributes
-var book = document.querySelector("li:first-child .name");
-console.log(book);
+const list = document.querySelector("#book-list ul");
 
-// check attributes
-book.hasAttribute("class"); //shoud return TRUE
+// delete books
+list.addEventListener("click", (e) => {
+  if (e.target.className === "delete") {
+    const li = e.target.parentElement;
+    list.removeChild(li);
+  }
+});
 
-// get attributes
-book.getAttribute("class"); // should return name
-book.getAttribute("id"); // should return null
+// add book list
+const addForm = document.forms["add-book"];
 
-// set attributes
-book.setAttribute("id", "name"); // should return id attribute and set to 'name'
-book.setAttribute("class", "name"); // should return class attribute and set to 'name'
+addForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const value = addForm.querySelector('input[type="text"]').value;
 
-// remove attributes
-book.removeAttribute("class"); // remove class attribute
-book.removeAttribute("id"); // remove id attribute
+  // create elements
+  const li = document.createElement("li");
+  const bookName = document.createElement("span");
+  const deleteBtn = document.createElement("span");
+
+  // add content
+  deleteBtn.textContent = "delete";
+  bookName.textContent = value;
+
+  // add classes
+  bookName.classList.add("name");
+  deleteBtn.classList.add("delete");
+
+  // appeend to document inside the LI element
+  li.appendChild(bookName);
+  li.appendChild(deleteBtn);
+
+  // append the LI to the DOM
+  list.appendChild(li);
+});
+
+// hide books
+const hideBox = document.querySelector("#hide");
+hideBox.addEventListener("click", (e) => {
+  if (hideBox.checked) {
+    list.style.display = "none";
+  } else {
+    list.style.display = "initial";
+  }
+});
