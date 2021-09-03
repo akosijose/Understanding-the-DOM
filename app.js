@@ -24,6 +24,10 @@ addForm.addEventListener("submit", (e) => {
   deleteBtn.textContent = "delete";
   bookName.textContent = value;
 
+  // add classes
+  bookName.classList.add("name");
+  deleteBtn.classList.add("delete");
+
   // appeend to document inside the LI element
   li.appendChild(bookName);
   li.appendChild(deleteBtn);
