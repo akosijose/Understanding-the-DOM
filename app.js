@@ -45,3 +45,19 @@ hideBox.addEventListener("click", (e) => {
     list.style.display = "initial";
   }
 });
+
+// filter books / search books
+const searchBar = document.forms["search-books"].querySelector("input");
+searchBar.addEventListener("keyup", (e) => {
+  // first grab the search term
+  const term = e.target.value.toLowerCase();
+  const books = list.getElementsByTagName("li"); // this is HTML collection
+  Array.from(books).forEach((book) => {
+    const title = book.firstElementChild.textContent;
+    if (title.toLowerCase().indexOf(term) != -1) {
+      book.style.display = "block";
+    } else {
+      book.style.display = "none";
+    }
+  });
+});
